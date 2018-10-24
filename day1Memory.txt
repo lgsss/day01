@@ -1,0 +1,67 @@
+git是开源的分布式版本控制系统,可以有效,高速的处理从很小到非常的打的项目版本管理
+
+配置用户名:git config --global user.name "yourName"
+配置邮箱:    git config --global user.email "yourEmail"
+查看配置信息:git config --list
+
+git版本库又名仓库,英文名repository;可以简单理解成为一个目录,这个目录里面的所有问价你都可以被git管理起来,每个文件的修改,删除git都能跟踪,以便任何
+时刻都可以追踪历史,或者在将来某个时刻可以"还原"
+
+创建仓库方法:
+1)可以先创建一个空的目录 mkdir PHP803	
+2)进入创建好的目录:cd PHP1803
+3)初始化一个仓库:git init
+此时一个仓库就创建好了
+注意:2)和3)可以统写为: git init --bare 仓库名
+
+查看当前所在目录:pwd
+查看仓库状态:git status
+查看隐藏文件目录:ls -a
+查看正常文件及目录:ll
+查看文件内容:cat fileName
+查看日志:git log
+清理工作区域:clear
+
+创建文件:echo "content" >>fileName   --此命令为在原内容上追加
+  	echo "content" >fileName    --此命令为覆盖原内容
+
+创建空文件:touch fileName	或者 vi(vim) fileName
+
+将文件添加到暂存区:git add fileName  	(git add .) 此命令为将所有文件都添加至暂存区
+将文件提交到版本库:git commit -m "备注信息"
+重置信息:git reset HEAD fileName
+信息回滚:git reset --hard 要回滚的版本号
+
+
+
+远程仓库的操作(github):
+1)注册github账号[www.github.com]
+2)创建ssh-key: ssh-keygen -t rsa -C "注册的邮箱"
+3)根据2)中的路径找到存放在本地的秘钥,进入github.com,点击个人设置中的ssh和gpg密钥,随意写一个标题,然后将密钥复制到 "键"中
+4)使用命令 Ssh -T git@github.com 进行本地与远程仓库连接
+5)添加远程仓库
+6)echo "# 仓库名" >> README.md
+  git init
+  git add README.mdgit commit -m "备注信息"
+  git remote add origin https://github.com/用户名/仓库名.git
+  git push -u origin master
+
+
+克隆仓库:git clone
+
+
+标签管理
+	查看所有标签:git tag
+	创建标签:git tag tagName
+	指定提交信息:git tag -a tagName-m ''content"
+	删除标签:git tag -d tagName
+	标签发布:git push origin tagName
+
+
+分支管理
+	查看分支:git branch
+	创建分支:git branch dev(分支名称)
+	创建并切换分支:git checkout -b dev(分支名称)
+	切换分支:git checkout dev
+	删除分支:git branch -d dev
+	合并分支:git merge dev
